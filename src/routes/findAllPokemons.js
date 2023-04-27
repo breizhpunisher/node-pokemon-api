@@ -1,8 +1,9 @@
 const { Pokemon } = require('../db/sequelize')
 const { Op } = require('sequelize') // importation opérateurs sequelize
+const auth = require('../auth/auth')
   
 module.exports = (app) => {
-  app.get('/api/pokemons', (req, res) => {
+  app.get('/api/pokemons', auth, (req, res) => {
     // extraire la propriété name par requète avancée.
     if(req.query.name) {
       const name = req.query.name
